@@ -1,0 +1,58 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+<head>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
+    <!--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+    <!--crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"-->
+    <!--integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
+    <!--crossorigin="anonymous"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.jshttps://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"-->
+    <!--integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"-->
+    <!--crossorigin="anonymous"></script>-->
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="popup.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<form id="form">
+    <div class="form-group">
+        <label for="authUrl">Auth</label>
+        <input type="text" class="form-control" id="authUrl"
+               placeholder="Auth Url" value1="http://localhost:8080/auth/realms/master/protocol/openid-connect/token">
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Username" value1="admin">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" value1="admin">
+    </div>
+
+    <div class="form-group">
+        <label for="client">Client</label>
+        <input type="text" class="form-control" id="client" placeholder="Client" value1="admin-cli">
+    </div>
+
+    <div class="form-group">
+        <label for="client">Filter URLs</label>
+        <input type="text" class="form-control" id="filterUrls" placeholder="Filter URLs" value="*://localhost/*, *://127.0.0.1/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="login">Login</button>
+</form>
+</body>
+</html>
