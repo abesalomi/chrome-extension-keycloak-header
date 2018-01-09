@@ -5,3 +5,17 @@ html {
 body {
     padding: 20px;
 }
+
+#tocken {
+    height: 0px;
+    width: 0px;
+
+
+    background: transparent;
+    color: white;
+    resize: none;
+    border: 0 none;
+    font-size: 5em;
+    outline: none;
+    position: absolute;
+}

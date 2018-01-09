@@ -49,10 +49,20 @@
 
     <div class="form-group">
         <label for="client">Filter URLs</label>
-        <input type="text" class="form-control" id="filterUrls" placeholder="Filter URLs" value="*://localhost/*, *://127.0.0.1/*">
+        <input type="text" class="form-control" id="filterUrls" placeholder="Filter URLs"
+               value="*://localhost/*, *://127.0.0.1/*">
     </div>
 
+
     <button type="submit" class="btn btn-primary" id="login">Login</button>
+    <button type="submit" class="btn btn-warning" id="copy">Login & Copy</button>
+    <button type="submit" class="btn btn-danger" id="copyWithBearer">Login & Copy with Bearer</button>
+
+    <div class="form-group" id="tockenContainer">
+        <label for="client"></label>
+        <textarea readonly class="form-control" id="tocken" placeholder="Tocken"></textarea>
+    </div>
+
 </form>
 </body>
 </html>
