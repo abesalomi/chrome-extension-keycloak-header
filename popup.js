@@ -103,10 +103,23 @@ function login(wantCopy, copyPrefix) {
         accessToken: response.access_token,
         urls: urls
       });
+
+      $.notify({
+        message: 'Success' 
+      },{
+        type: 'success'
+      });
+      setTimeout(function(){
+        window.close();
+      }, 500);
     },
 
     error: function () {
-      alert("ERROR !!!")
+      $.notify({
+        message: 'Fail' 
+      },{
+        type: 'danger'
+      });
     },
   });
 };
