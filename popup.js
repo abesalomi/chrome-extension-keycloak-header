@@ -39,7 +39,8 @@ function parseUrls(urlsStr) {
   return urlsStr
     .split(",")
     .map(c => c.trim())
-    .filter(c => c);
+    .filter(c => c)
+    .map(c => "*://" + c + "/*");
 }
 
 function copy() {
@@ -61,7 +62,7 @@ function login(wantCopy, copyPrefix) {
   const filterUrls = $("#filterUrls").val();
   const urls = parseUrls(filterUrls);
 
-
+  console.log(urls)
   localStorage.setItem("url", url);
   localStorage.setItem("clientId", clientId);
   localStorage.setItem("username", username);
