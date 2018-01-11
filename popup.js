@@ -1,3 +1,7 @@
+const port = chrome.extension.connect({
+  name: "Sample Communication"
+});
+
 $(document).ready(function () {
 
 
@@ -23,7 +27,6 @@ $(document).ready(function () {
 
 
   $('form').submit(function (e) {
-
     e.preventDefault();
   });
 
@@ -31,6 +34,11 @@ $(document).ready(function () {
   $('#login').click(() => login());
   $('#copy').click(() => login(true));
   $('#copyWithBearer').click(() => login(true, "Bearer "));
+  $('#disable').click(function () {
+    port.postMessage({
+      xtype: 'DISABLE'
+    });
+  });
 
 
 });
@@ -51,10 +59,6 @@ function copy() {
 
 function login(wantCopy, copyPrefix) {
 
-  const port = chrome.extension.connect({
-    name: "Sample Communication"
-  });
-
   const url = $("#authUrl").val();
   const clientId = $("#client").val();
   const username = $("#username").val();
@@ -62,7 +66,6 @@ function login(wantCopy, copyPrefix) {
   const filterUrls = $("#filterUrls").val();
   const urls = parseUrls(filterUrls);
 
-  console.log(urls)
   localStorage.setItem("url", url);
   localStorage.setItem("clientId", clientId);
   localStorage.setItem("username", username);
@@ -100,24 +103,25 @@ function login(wantCopy, copyPrefix) {
       }
 
       port.postMessage({
+        type: "ENABLE",
         accessToken: response.access_token,
         urls: urls
       });
 
       $.notify({
-        message: 'Success' 
-      },{
+        message: 'Success'
+      }, {
         type: 'success'
       });
-      setTimeout(function(){
+      setTimeout(function () {
         window.close();
       }, 500);
     },
 
     error: function () {
       $.notify({
-        message: 'Fail' 
-      },{
+        message: 'Fail'
+      }, {
         type: 'danger'
       });
     },

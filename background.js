@@ -5,9 +5,14 @@ const state = {
 
 chrome.extension.onConnect.addListener(function (port) {
   port.onMessage.addListener(function (request, sender) {
-    state.accessToken = request.accessToken;
-    removeListener();
-    setListener(request.urls);
+    if (request.type === 'ENABLE') {
+      state.accessToken = request.accessToken;
+      removeListener();
+      setListener(request.urls);
+    } else if (request.type === 'DISABLE') {
+      removeListener();
+    }
+
   });
 });
 
