@@ -9,8 +9,10 @@ chrome.extension.onConnect.addListener(function (port) {
       state.accessToken = request.accessToken;
       removeListener();
       setListener(request.urls);
+      console.log("enabled")
     } else if (request.type === 'DISABLE') {
       removeListener();
+      console.log("disabled")
     }
 
   });
@@ -35,9 +37,6 @@ function setListener(filters) {
     },
     ['requestHeaders', 'blocking']
   );
-
-  console.log(urls);
-
 }
 
 function removeListener() {

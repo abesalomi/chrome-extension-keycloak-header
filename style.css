@@ -10,7 +10,6 @@ body {
     height: 0px;
     width: 0px;
 
-
     background: transparent;
     color: white;
     resize: none;
@@ -18,4 +17,8 @@ body {
     font-size: 5em;
     outline: none;
     position: absolute;
+}
+
+.btn {
+    margin: 2px !important;
 }

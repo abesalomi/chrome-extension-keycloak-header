@@ -33,10 +33,12 @@ $(document).ready(function () {
 
   $('#login').click(() => login());
   $('#copy').click(() => login(true));
+  $('#onlyCopy').click(() => login(true, "", true));
   $('#copyWithBearer').click(() => login(true, "Bearer "));
+  $('#onlyCopyWithBearer').click(() => login(true, "Bearer ", true));
   $('#disable').click(function () {
     port.postMessage({
-      xtype: 'DISABLE'
+      type: 'DISABLE'
     });
   });
 
@@ -57,7 +59,7 @@ function copy() {
   document.execCommand("Copy");
 }
 
-function login(wantCopy, copyPrefix) {
+function login(wantCopy, copyPrefix, nonAutoHeader) {
 
   const url = $("#authUrl").val();
   const clientId = $("#client").val();
@@ -102,11 +104,13 @@ function login(wantCopy, copyPrefix) {
         $("#tocken").hide();
       }
 
-      port.postMessage({
-        type: "ENABLE",
-        accessToken: response.access_token,
-        urls: urls
-      });
+      if (!nonAutoHeader) {
+        port.postMessage({
+          type: "ENABLE",
+          accessToken: response.access_token,
+          urls: urls
+        });
+      }
 
       $.notify({
         message: 'Success'
